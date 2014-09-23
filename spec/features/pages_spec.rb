@@ -7,9 +7,9 @@ describe 'Static pages' do
       visit root_path
       expect(page).to have_content('Welcome')
     end
-    it "should have title 'Roomswap | Home'" do
+    it "should have title 'Swap Sniper | Home'" do
       visit root_path
-      expect(page).to have_title("Roomswap | Home")
+      expect(page).to have_title("Swap Sniper | Home")
     end
   end
 
@@ -18,9 +18,9 @@ describe 'Static pages' do
       visit '/help'
       expect(page).to have_content('Help')
     end
-    it "should have title 'Roomswap | Help'" do
+    it "should have title 'Swap Sniper | Help'" do
       visit '/help'
-      expect(page).to have_title("Roomswap | Help")
+      expect(page).to have_title("Swap Sniper | Help")
     end
 
   end
@@ -30,9 +30,9 @@ describe 'Static pages' do
       visit '/contact'
       expect(page).to have_content('Contact Us')
     end
-    it "should have title 'Roomswap | Contact Us'" do
+    it "should have title 'Swap Sniper | Contact Us'" do
       visit '/contact'
-      expect(page).to have_title("Roomswap | Contact Us")
+      expect(page).to have_title("Swap Sniper | Contact Us")
     end
   end
 
