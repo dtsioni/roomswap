@@ -1,6 +1,12 @@
 class User < ActiveRecord::Base
 
-  
+  belongs_to :university
+  belongs_to :home, class_name: "Location",
+    foreign_key: "home_id"
+  has_and_belongs_to_many :targets, class_name: "Location",
+    foreign_key: "target_id"
+  has_one :swap
+
   before_save{ self.email = email.downcase }  
 
   validates :name, length: {maximum: 20, minimum: 3}, presence: true
