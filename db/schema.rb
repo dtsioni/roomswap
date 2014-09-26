@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140923184834) do
+ActiveRecord::Schema.define(version: 20140926210528) do
 
   create_table "locations", force: true do |t|
     t.datetime "created_at"
@@ -19,12 +19,28 @@ ActiveRecord::Schema.define(version: 20140923184834) do
     t.string   "campus"
     t.string   "building"
     t.integer  "floor"
+    t.integer  "university_id"
+  end
+
+  create_table "locations_users", id: false, force: true do |t|
+    t.integer "location_id", null: false
+    t.integer "user_id",     null: false
+    t.integer "target_id"
+    t.integer "migrator_id"
   end
 
   create_table "swaps", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.integer  "destination_id"
+    t.integer  "origin_id"
+    t.integer  "location_id"
+  end
+
+  create_table "universities", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|
@@ -33,6 +49,8 @@ ActiveRecord::Schema.define(version: 20140923184834) do
     t.string   "email"
     t.string   "password_digest"
     t.string   "name"
+    t.integer  "university_id"
+    t.integer  "home_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
