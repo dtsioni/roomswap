@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140927214508) do
+ActiveRecord::Schema.define(version: 20140927220635) do
 
   create_table "locations", force: true do |t|
     t.datetime "created_at"
@@ -20,6 +20,11 @@ ActiveRecord::Schema.define(version: 20140927214508) do
     t.string   "building"
     t.integer  "floor"
     t.integer  "university_id"
+  end
+
+  create_table "locations_swaps", id: false, force: true do |t|
+    t.integer "incoming_swap_id"
+    t.integer "destination_id"
   end
 
   create_table "locations_users", id: false, force: true do |t|
@@ -31,7 +36,6 @@ ActiveRecord::Schema.define(version: 20140927214508) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
-    t.integer  "destination_id"
     t.integer  "origin_id"
     t.integer  "location_id"
   end
