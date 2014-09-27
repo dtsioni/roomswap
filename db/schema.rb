@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140926210528) do
+ActiveRecord::Schema.define(version: 20140927214508) do
 
   create_table "locations", force: true do |t|
     t.datetime "created_at"
@@ -23,10 +23,8 @@ ActiveRecord::Schema.define(version: 20140926210528) do
   end
 
   create_table "locations_users", id: false, force: true do |t|
-    t.integer "location_id", null: false
-    t.integer "user_id",     null: false
-    t.integer "target_id"
     t.integer "migrator_id"
+    t.integer "target_id"
   end
 
   create_table "swaps", force: true do |t|

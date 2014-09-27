@@ -2,7 +2,7 @@ require 'spec_helper'
 describe User do
 
   before{ @user = User.new(name: "Example User", email: "example_user@example.com",
-    password: "password", password_confirmation: "password") }
+    password: "password", password_confirmation: "password", university_id: "1") }
   subject{ @user }
   #### model
   it{ should respond_to(:name) }
@@ -11,6 +11,9 @@ describe User do
   it{ should respond_to(:password) }
   it{ should respond_to(:password_confirmation) }
   it{ should respond_to(:authenticate) }
+
+  it{ should respond_to(:university_id) }
+  it{ should respond_to(:home_id) }
 
   it{ should be_valid }
   #### name
@@ -100,5 +103,13 @@ describe User do
 
     it{should_not be_valid}
   end
+
+  #### ids
+
+  describe "when university_id is not present" do
+    before { @user.university_id = " " }
+    it{ should_not be_valid }
+  end
+
 
 end
