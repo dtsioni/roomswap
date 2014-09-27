@@ -4,7 +4,5 @@ class Swap < ActiveRecord::Base
     foreign_key: "origin_id"
   has_and_belongs_to_many :destinations, class_name: "Location",
   join_table: "locations_swaps", foreign_key: "destination_id",
-  association_foreign_key: "incoming_swap_id"
-  belongs_to :destination, class_name: "Location",
-    foreign_key: "destination_id"    
+  association_foreign_key: "incoming_swap_id"    
 end
