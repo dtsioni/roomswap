@@ -52,6 +52,9 @@ GEM
     execjs (2.2.1)
     factory_girl (4.4.0)
       activesupport (>= 3.0.0)
+    factory_girl_rails (4.4.1)
+      factory_girl (~> 4.4.0)
+      railties (>= 3.0.0)
     haml (4.0.5)
       tilt
     hike (1.2.3)
@@ -153,7 +156,7 @@ DEPENDENCIES
   bootstrap-sass
   capybara
   coffee-rails (~> 4.0.0)
-  factory_girl
+  factory_girl_rails
   haml
   jbuilder (~> 2.0)
   jquery-rails
@@ -162,6 +165,7 @@ DEPENDENCIES
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
   spring
+  sprockets
   sqlite3
   therubyracer
   turbolinks

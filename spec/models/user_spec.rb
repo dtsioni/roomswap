@@ -2,7 +2,8 @@ require 'spec_helper'
 describe User do
 
   before{ @user = User.new(name: "Example User", email: "example_user@example.com",
-    password: "password", password_confirmation: "password", university_id: "1") }
+    password: "password", password_confirmation: "password", university_id: "1",
+    gender: "gender") }
   subject{ @user }
   #### model
   it{ should respond_to(:name) }
@@ -13,7 +14,7 @@ describe User do
   it{ should respond_to(:authenticate) }
   it{ should respond_to(:university_id) }
   it{ should respond_to(:home_id) }
-
+  it{ should respond_to(:gender) }
   it{ should be_valid }
   #### name
   describe "when name is too long" do
@@ -107,6 +108,28 @@ describe User do
 
   describe "when university_id is not present" do
     before { @user.university_id = " " }
+    it{ should_not be_valid }
+  end
+
+  describe "when user has no swap and no home id" do
+    before{ @user.home_id = " " }
+    it{ should be_valid }
+  end
+
+  describe "when user has a swap and no home id" do
+    before do
+      @user.swap = FactoryGirl.create(:swap)
+      @user.home_id = " "
+    end
+
+    it{ should_not be_valid }
+  end
+
+
+  #### gender
+
+  describe "when gender is not present" do
+    before{ @user.gender = " " }
     it{ should_not be_valid }
   end
 

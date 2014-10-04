@@ -27,10 +27,11 @@ gem 'spring',        group: :development
 group :development, :test do
   gem 'rspec-rails', '~> 2.0'
 end
-gem 'factory_girl'
+gem 'factory_girl_rails'
 gem 'haml'
 gem 'capybara'
 gem 'bootstrap-sass'
+gem 'sprockets'
 gem 'bcrypt-ruby'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

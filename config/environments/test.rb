@@ -1,4 +1,7 @@
 Rails.application.configure do
+  # Make passwords less secure to speed up testing time
+  ActiveModel::SecurePassword.min_cost = true
+  
   # Settings specified here will take precedence over those in config/application.rb.
 
   # The test environment is used exclusively to run your application's

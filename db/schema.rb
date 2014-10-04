@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140927224922) do
+ActiveRecord::Schema.define(version: 20141003210049) do
 
   create_table "locations", force: true do |t|
     t.datetime "created_at"
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 20140927224922) do
     t.string   "name"
     t.integer  "university_id"
     t.integer  "home_id"
+    t.string   "gender"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
