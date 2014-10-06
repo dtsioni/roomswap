@@ -1,0 +1,9 @@
+= bootstrap_form_for(@user, label_errors: true, :html => {:class => "center"}) do |f|
+  =f.text_field :name, placeholder: "Username", label: "Name", hide_label: true
+  =f.email_field :email, placeholder: "Email", label: "Email", hide_label: true
+  =f.password_field :password, placeholder: "Password", label: "Password", hide_label: true
+  =f.password_field :password_confirmation, placeholder: "Confirm password", label: "Confirm password", hide_label: true
+  =f.form_group :gender do
+    =f.radio_button :gender, "male", label: "Male", inline: true
+    =f.radio_button :gender, "female", label: "Female", inline: true
+  =f.submit "Submit"

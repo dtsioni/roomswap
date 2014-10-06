@@ -15,6 +15,9 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    # set university to Rutgers for now
+    # if adding university expandability, put university selection in form and add to user_params
+    @user.university = University.find_by(name: "Rutgers University - New Brunswick")
     respond_to do |format|
       if @user.save
         format.html{ redirect_to @user }
@@ -57,6 +60,6 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :gender)
     end
 end
