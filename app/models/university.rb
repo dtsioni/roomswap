@@ -6,6 +6,6 @@ class University < ActiveRecord::Base
   #currently Rutgers New Brunswick
   def self.default
     uni = University.find_by(name: "Rutgers University - New Brunswick")
-    uni ? uni : University.create(name: "Rutgers University - New Brunswick")
+    uni ||= University.create(name: "Rutgers University - New Brunswick")
   end
 end

@@ -17,9 +17,10 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     # set university to Rutgers for now
     # if adding university expandability, put university selection in form and add to user_params
-    @user.university = University.default
+    @user.university = University.default    
     respond_to do |format|
       if @user.save
+        sign_in @user
         format.html{ redirect_to @user }
         flash[:success] = "Welcome!"
       else
