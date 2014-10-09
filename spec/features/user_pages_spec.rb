@@ -49,7 +49,6 @@ describe "User pages" do
 
     before do
       @user = FactoryGirl.create(:user)
-      @user.university = FactoryGirl.create(:university)
       visit edit_user_path(@user)
     end
 
@@ -77,5 +76,34 @@ describe "User pages" do
     end
 
   end
+
+  describe "index page" do
+
+    before do
+      @user1 = FactoryGirl.create(:user)
+      @user2 = FactoryGirl.create(:user)
+      visit users_path
+    end
+
+    it{ should have_content("Users") }
+    it{ should have_selector("#delete_user_#{@user1.id}") }
+    it{ should have_selector("#delete_user_#{@user2.id}") }
+    it{ should have_selector("#edit_user_#{@user1.id}") }
+    it{ should have_selector("#edit_user_#{@user2.id}") }
+    it{ should have_content("#{@user1.id}") }
+    it{ should have_content("#{@user2.id}") }
+    it{ should have_content("#{@user1.name}") }
+    it{ should have_content("#{@user2.name}") }
+    it{ should have_content("#{@user1.email}") }
+    it{ should have_content("#{@user2.email}") }
+    
+
+  end
+
+
+
+
+
+
 
 end
