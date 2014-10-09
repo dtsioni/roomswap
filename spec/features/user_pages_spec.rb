@@ -41,8 +41,41 @@ describe "User pages" do
   end
 
   describe "profile page" do
-    before{ visit user_path(user) }
+    before { visit user_path(user) }
     it{ should have_content(user.name) }
+  end
+
+  describe "edit page" do
+
+    before do
+      @user = FactoryGirl.create(:user)
+      @user.university = FactoryGirl.create(:university)
+      visit edit_user_path(@user)
+    end
+
+    it{ should have_content(@user.name) }
+    it{ should have_title(full_title("Edit | #{@user.name}")) }
+
+    describe "editing user" do
+
+      before do 
+        fill_in "Name", with: "x#{@user.name}"
+        fill_in "Email", with: "x#{@user.email}"
+      end
+
+      it "changes the user name" do
+        expect{ click_button "Submit" 
+            @user.reload}.to change(@user, :name)
+      end
+
+      it "changes the user email" do
+        expect{ click_button "Submit"
+            @user.reload}.to change(@user, :email)
+      end
+
+
+    end
+
   end
 
 end

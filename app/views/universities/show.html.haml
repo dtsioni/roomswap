@@ -1,0 +1,5 @@
+-provide(:title, @university.name)
+%h1
+  = @university.name
+%h3.center
+  = "There #{@university.users.count == 1 ? "is" : "are" } currently #{pluralize(@university.users.count, 'user')} signed up."
