@@ -11,4 +11,10 @@ class Location < ActiveRecord::Base
   validates :university_id, presence: true
   validates :campus, presence: true
   validates :floor, absence: true, unless: :building?  
+
+  CAMPUSES = ["livingston", "college avenue", "busch", "cook/douglass"]
+  BUILDINGS_LIVINGSTON = ["lbuilding 1", "lbuilding 2", "lbuildling 3"]
+  BUILDINGS_BUSCH = ["bbuilding 1", "bbuilding2", "bbuilding3"]
+  BUILDINGS_COLLEGE_AVENUE = ["cacbuilding 1", "cacbuilding 2"]
+  BUILDINGS_COOK_DOUGLASS = ["cdbuilding 1"]
 end

@@ -1,0 +1,14 @@
+=form_for(@location) do |f|
+  .form-group
+    .input-group
+      =f.label :campus
+      =f.collection_select :campus, Location::CAMPUSES, :to_s, :humanize, selected: "livingston"
+    .input-group
+      =f.label :building      
+      =f.collection_select :building, Location::BUILDINGS_LIVINGSTON, :to_s, :humanize, id: "building_select"    
+    =javascript_tag "var BUILDINGS_LIVINGSTON = #{Location::BUILDINGS_LIVINGSTON}"
+    =javascript_tag "var BUILDINGS_BUSCH = #{Location::BUILDINGS_BUSCH}"
+    =javascript_tag "var BUILDINGS_COLLEGE_AVENUE = #{Location::BUILDINGS_COLLEGE_AVENUE}"
+    =javascript_tag "var BUILDINGS_COOK_DOUGLASS = #{Location::BUILDINGS_COOK_DOUGLASS}"
+
+      

@@ -17,7 +17,7 @@ describe "Authentication" do
     describe "with invalid information" do
       before { click_button "Sign in" }
 
-      it { should have_title('Sign in') }
+      it { should have_title(full_title('Sign in')) }
       it { should have_selector('div.error') }
     end
 
