@@ -1,14 +1,27 @@
-=form_for(@location) do |f|
+=bootstrap_form_for(@location) do |f|
   .form-group
-    .input-group
-      =f.label :campus
-      =f.collection_select :campus, Location::CAMPUSES, :to_s, :humanize, selected: "livingston"
-    .input-group
-      =f.label :building      
-      =f.collection_select :building, Location::BUILDINGS_LIVINGSTON, :to_s, :humanize, id: "building_select"    
-    =javascript_tag "var BUILDINGS_LIVINGSTON = #{Location::BUILDINGS_LIVINGSTON}"
-    =javascript_tag "var BUILDINGS_BUSCH = #{Location::BUILDINGS_BUSCH}"
-    =javascript_tag "var BUILDINGS_COLLEGE_AVENUE = #{Location::BUILDINGS_COLLEGE_AVENUE}"
-    =javascript_tag "var BUILDINGS_COOK_DOUGLASS = #{Location::BUILDINGS_COOK_DOUGLASS}"
+    #campus_input.input-group.center
+      .h4
+        =f.label :campus
+      .div
+        =f.collection_select :campus, Location::CAMPUSES, :to_s, :titleize, selected: "any", hide_label: true
+    #building_input.input-group.center
+      .h4
+        =f.label :building, id: "building_label"
+      .div
+        =f.collection_select :building, ["any"], :to_s, :titleize, selected: "any", id: "building_select", hide_label: true 
+    #floor_input.input-group.center
+      .h4
+        =f.label :floor, id: "floor_label"
+      .center
+        =f.collection_select :floor, ["any"], :to_i, :to_i, selected: "any", id: "floor_select", hide_label: true
 
-      
+    =javascript_tag "var BUILDINGS_LIVINGSTON = #{Location::BUILDINGS_LIVINGSTON};"
+    =javascript_tag "var BUILDINGS_BUSCH = #{Location::BUILDINGS_BUSCH};"
+    =javascript_tag "var BUILDINGS_COLLEGE_AVENUE = #{Location::BUILDINGS_COLLEGE_AVENUE};"
+    =javascript_tag "var BUILDINGS_COOK_DOUGLASS = #{Location::BUILDINGS_COOK_DOUGLASS};"
+
+    =javascript_tag "var FLOORS_LIVINGSTON = #{Location::FLOORS_LIVINGSTON.to_json};"
+    =javascript_tag "var FLOORS_BUSCH = #{Location::FLOORS_BUSCH.to_json}"
+    =javascript_tag "var FLOORS_COLLEGE_AVENUE = #{Location::FLOORS_COLLEGE_AVENUE.to_json}"
+    =javascript_tag "var FLOORS_COOK_DOUGLASS = #{Location::FLOORS_COOK_DOUGLASS.to_json}"

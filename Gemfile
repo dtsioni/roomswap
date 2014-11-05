@@ -38,6 +38,7 @@ gem 'bootstrap-sass'
 gem 'sprockets'
 gem 'bcrypt-ruby'
 gem 'bootstrap_form'
+gem 'ruby-json'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

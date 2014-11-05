@@ -119,6 +119,7 @@ GEM
       rspec-core (~> 2.99.0)
       rspec-expectations (~> 2.99.0)
       rspec-mocks (~> 2.99.0)
+    ruby-json (1.1.2)
     rubyzip (1.1.6)
     sass (3.2.19)
     sass-rails (4.0.3)
@@ -178,6 +179,7 @@ DEPENDENCIES
   launchy
   rails (= 4.1.6)
   rspec-rails (~> 2.0)
+  ruby-json
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
   selenium-webdriver
