@@ -28,27 +28,34 @@
     - destinations_count = 0
     =f.fields_for :destinations do |destinations_builder|
       .form-group.panel.panel-info
-        -destinations_count
         .panel-heading
           .panel-title
-            = (destinations_count + 1).ordinalize
+            = destinations_count + 1
         .panel-body
           %div{id: "campus_input_#{destinations_count}"}
             .h4
               =destinations_builder.label :campus
             %div
-              =destinations_builder.collection_select :campus, Location::CAMPUSES, :to_s, :titleize, selected: "any", hide_label: true
+              =destinations_builder.collection_select :campus, Location::CAMPUSES, :to_s, :titleize, {selected: "any", hide_label: true}, { onchange: "updateBuildings(#{destinations_count})"}
           %div{id: "building_input_#{destinations_count}"}
             .h4
               =destinations_builder.label :building, id: "building_label"
             %div
-              =destinations_builder.collection_select :building, ["any"], :to_s, :titleize, selected: "any", id: "building_select", hide_label: true 
+              =destinations_builder.collection_select :building, ["any"], :to_s, :titleize, {selected: "any", hide_label: true}, {onchange: "updateFloors(#{destinations_count})", id: "building_select_#{destinations_count}"}
           %div{id: "floor_input_#{destinations_count}"}
             .h4
               =destinations_builder.label :floor, id: "floor_label"
             %div
-              =destinations_builder.collection_select :floor, ["any"], :to_i, :to_i, selected: "any", id: "floor_select", hide_label: true    
+              =destinations_builder.collection_select :floor, ["any"], :to_i, :to_i, selected: "any", hide_label: true    
           =destinations_builder.hidden_field :university_id, :value => University.default.id
+
+      :javascript
+        $(document).ready(function(){
+          $('div#building_input_#{destinations_count}').hide();
+          $('div#floor_input_#{destinations_count}').hide();
+        });
+      - destinations_count += 1
+
   =f.submit "Submit"
 
 =javascript_tag "var BUILDINGS_LIVINGSTON = #{Location::BUILDINGS_LIVINGSTON};"

@@ -10,7 +10,7 @@ class SwapsController < ApplicationController
     @swap = Swap.new
     @origin = Location.new
     @swap.origin = @origin
-    1.times{ @swap.destinations.build }
+    3.times{ @swap.destinations.build }
   end
 
   def index
