@@ -1,3 +1,8 @@
 -provide(:title, @user.name)
 %h1
   =@user.name
+%h3
+  Swaps
+  -if @user.swap
+    - @swap = @user.swap
+    =render template: 'swaps/show'

@@ -1,12 +1,11 @@
 $(document).ready(function(){
-
   $('#building_input').hide();
   $('#floor_input').hide();
   var floors = "";
-  $('select#location_campus').change(
+  $('select#swap_origin_attributes_campus').change(
 
     function (){
-      var campus = $('#location_campus>option:selected').text();
+      var campus = $('#swap_origin_attributes_campus>option:selected').text();
       campus = campus.toLowerCase();
       var buildings = "";  
       switch(campus){
@@ -33,7 +32,7 @@ $(document).ready(function(){
         case "anywhere":
           buildings = ["anywhere"];
           floors = ["anywhere"];
-          $('select#location_floor').html("<option value = '0'>Anywhere</option>");                    
+          $('select#swap_origin_attributes_floor').html("<option value = '0'>Anywhere</option>");                    
           $('#building_input').fadeOut();
           $('#floor_input').fadeOut();        
           break;
@@ -42,15 +41,15 @@ $(document).ready(function(){
       for(i = 0; i < buildings.length; i++){
         newOptions += "<option value ='" + buildings[i] + "'>" + buildings[i].toTitleCase() + "</option>";
       }
-      $('#location_building').html(newOptions);
+      $('#swap_origin_attributes_building').html(newOptions);
     }
 
   );
 
-  $('select#location_building').change(
+  $('select#swap_origin_attributes_building').change(
 
     function updateFloors(){
-      var building = $('#location_building>option:selected').text();
+      var building = $('#swap_origin_attributes_building>option:selected').text();
       building = building.toLowerCase();
       var newOptions = "<option value = '0'>Anywhere</option>";
       if(building == "anywhere"){
@@ -61,7 +60,7 @@ $(document).ready(function(){
         }
         $('#floor_input').fadeIn();
       }
-      $('select#location_floor').html(newOptions);
+      $('select#swap_origin_attributes_floor').html(newOptions);
     }
 
   )

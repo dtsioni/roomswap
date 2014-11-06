@@ -1,7 +1,13 @@
 class LocationsController < ApplicationController
 
+  before_action :set_location, only: [:show]
+
   def new
     @location = Location.new
+  end
+
+  def show
+
   end
 
   def index
@@ -23,6 +29,9 @@ class LocationsController < ApplicationController
   end
 
   private
+    def set_location
+      @location = Location.find(params[:id])
+    end
 
     def user_params
       params.require(:location).permit(:campus, :floor, :building)

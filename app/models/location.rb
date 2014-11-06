@@ -23,6 +23,4 @@ class Location < ActiveRecord::Base
   FLOORS_BUSCH = {"allen hall" => 4, "barr hall" => 4, "best" => 4, "crosby suites" => 4, "davidson hall" => 1, "judson suites" => 4, "mattia hall" => 4, "mccormick suites" => 10, "metzger hall" => 4, "morrow suites" => 4, "nichols apartments" => 3, "richardson apartments" => 3, "silvers apartments" => 4, "thomas suites" => 4, "winkler suites" => 4, "marvin apartments" => 3, "buell apartments" => 3, "johnson apartments" => 2}
   FLOORS_COLLEGE_AVENUE = {"brett hall" => 4, "campbell hall" => 6, "clothier hall" => 6, "demarest hall" => 3, "frelinghuysen hall" => 6, "hardenbergh hall" => 6, "hegeman hall" => 3, "leupp hall" => 3, "mettler hall" => 4, "pell hall" => 3, "stonier hall" => 5, "tinsley hall" => 4, "university center at easton ave apartments" => 7, "wessels hall" => 3}
   FLOORS_COOK_DOUGLASS = {"heylar house" => 2, "henderson apartments" => 4, "jameson hall" => 3, "katzenbach hall" => 4, "lippincott hall" => 4, "new gibbons hall" => 3, "newell apartments" => 2, "nicholas hall" => 3, "old gibbons hall" => 3, "perry hall" => 4, "voorhees hall" => 4, "woodbury bunting-cobb hall" => 3, "starkey apartments" => 3}
-
-
 end

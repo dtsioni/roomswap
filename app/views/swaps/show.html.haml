@@ -1,0 +1,6 @@
+%p
+  - @location = @swap.origin
+  =render template: 'locations/show'
+  - @swap.destinations.each do |des|
+    - @location = des
+    = render template: 'locations/show'

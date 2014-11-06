@@ -1,0 +1,62 @@
+= bootstrap_form_for(@swap, label_errors: true, :html => {}) do |f|
+  .panel
+    %h3 Origin
+    %p Where do you currently live?
+  .panel
+    =f.fields_for :origin do |origin_builder|
+      .form-group
+        #campus_input
+          .h4
+            =origin_builder.label :campus
+          %div
+            =origin_builder.collection_select :campus, Location::CAMPUSES, :to_s, :titleize, selected: "any", hide_label: true
+        #building_input
+          .h4
+            =origin_builder.label :building, id: "building_label"
+          %div
+            =origin_builder.collection_select :building, ["any"], :to_s, :titleize, selected: "any", id: "building_select", hide_label: true 
+        #floor_input
+          .h4
+            =origin_builder.label :floor, id: "floor_label"
+          %div
+            =origin_builder.collection_select :floor, ["any"], :to_i, :to_i, selected: "any", id: "floor_select", hide_label: true    
+        =origin_builder.hidden_field :university_id, :value => University.default.id
+  .panel
+    %h3 Destinations
+    %p Where would you like to live?
+  .panel
+    - destinations_count = 0
+    =f.fields_for :destinations do |destinations_builder|
+      .form-group.panel.panel-info
+        -destinations_count
+        .panel-heading
+          .panel-title
+            = (destinations_count + 1).ordinalize
+        .panel-body
+          %div{id: "campus_input_#{destinations_count}"}
+            .h4
+              =destinations_builder.label :campus
+            %div
+              =destinations_builder.collection_select :campus, Location::CAMPUSES, :to_s, :titleize, selected: "any", hide_label: true
+          %div{id: "building_input_#{destinations_count}"}
+            .h4
+              =destinations_builder.label :building, id: "building_label"
+            %div
+              =destinations_builder.collection_select :building, ["any"], :to_s, :titleize, selected: "any", id: "building_select", hide_label: true 
+          %div{id: "floor_input_#{destinations_count}"}
+            .h4
+              =destinations_builder.label :floor, id: "floor_label"
+            %div
+              =destinations_builder.collection_select :floor, ["any"], :to_i, :to_i, selected: "any", id: "floor_select", hide_label: true    
+          =destinations_builder.hidden_field :university_id, :value => University.default.id
+  =f.submit "Submit"
+
+=javascript_tag "var BUILDINGS_LIVINGSTON = #{Location::BUILDINGS_LIVINGSTON};"
+=javascript_tag "var BUILDINGS_BUSCH = #{Location::BUILDINGS_BUSCH};"
+=javascript_tag "var BUILDINGS_COLLEGE_AVENUE = #{Location::BUILDINGS_COLLEGE_AVENUE};"
+=javascript_tag "var BUILDINGS_COOK_DOUGLASS = #{Location::BUILDINGS_COOK_DOUGLASS};"
+
+=javascript_tag "var FLOORS_LIVINGSTON = #{Location::FLOORS_LIVINGSTON.to_json};"
+=javascript_tag "var FLOORS_BUSCH = #{Location::FLOORS_BUSCH.to_json}"
+=javascript_tag "var FLOORS_COLLEGE_AVENUE = #{Location::FLOORS_COLLEGE_AVENUE.to_json}"
+=javascript_tag "var FLOORS_COOK_DOUGLASS = #{Location::FLOORS_COOK_DOUGLASS.to_json}"

@@ -1,0 +1,9 @@
+- if @swap && @swap.errors.any?
+  #error_explanation
+    %div
+      The form contains
+      =pluralize(@swap.errors.count, "error")
+    %ul{class:""}
+    -@swap.errors.full_messages.each do |msg|
+      %li        
+        =msg

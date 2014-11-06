@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :universities, only: [:show]
   resources :sessions, only: [:new, :create, :destroy]
   resources :locations, only: [:new, :index, :create, :destroy]
+  resources :swaps, only: [:new, :index, :create, :destroy, :show]
 
   match 'signup', to: 'users#new', via: 'get'
   match '/signin',  to: 'sessions#new',         via: 'get'
