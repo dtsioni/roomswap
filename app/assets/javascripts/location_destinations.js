@@ -2,6 +2,7 @@ function updateBuildings(num){
   var campus = $('#swap_destinations_attributes_' + num + '_campus>option:selected').text();
   campus = campus.toLowerCase();
   var buildings = "";
+  //find which campus is chosen, and designate proper buildings array and floors hash and then fade in
   switch(campus){
     case "busch":
       buildings = BUILDINGS_BUSCH;
@@ -24,8 +25,8 @@ function updateBuildings(num){
       $('#building_input_' + num).fadeIn();
       break;
     case "anywhere":
+      //change building and floor to "anywhere", then fade out
       buildings = ["anywhere"];
-      floors = ["anywhere"];
       $('#swap_destinations_attributes_' + num + '_floor').html("<option value = '0'>Anywhere</option>");                    
       $('#building_input_' + num).fadeOut();
       $('#floor_input_' + num).fadeOut();        
@@ -41,7 +42,6 @@ function updateBuildings(num){
 function updateFloors(num){
   var building = $('#building_select_' + num + '>option:selected').text();
   building = building.toLowerCase();
-  console.log(building);
   var newOptions = "<option value = '0'>Anywhere</option>";
   if(building == "anywhere"){
     $('#floor_input_' + num).fadeOut();        

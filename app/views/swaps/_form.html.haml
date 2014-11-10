@@ -5,22 +5,24 @@
   .panel
     =f.fields_for :origin do |origin_builder|
       .form-group
-        #campus_input
+        #campus_input_origin
           .h4
             =origin_builder.label :campus
           %div
-            =origin_builder.collection_select :campus, Location::CAMPUSES, :to_s, :titleize, selected: "any", hide_label: true
-        #building_input
+            - campuses_no_any = Location::CAMPUSES.drop(1)
+            =origin_builder.collection_select :campus, campuses_no_any, :to_s, :titleize, selected: "livingston", hide_label: true
+        #building_input_origin
           .h4
             =origin_builder.label :building, id: "building_label"
           %div
-            =origin_builder.collection_select :building, ["any"], :to_s, :titleize, selected: "any", id: "building_select", hide_label: true 
-        #floor_input
+            - liv_buildings_no_any = Location::BUILDINGS_LIVINGSTON.drop(1)
+            =origin_builder.collection_select :building, liv_buildings_no_any, :to_s, :titleize, selected: "livingston apartments", id: "building_select", hide_label: true 
+        #floor_input_origin
           .h4
             =origin_builder.label :floor, id: "floor_label"
           %div
-            =origin_builder.collection_select :floor, ["any"], :to_i, :to_i, selected: "any", id: "floor_select", hide_label: true    
-        =origin_builder.hidden_field :university_id, :value => University.default.id
+            =origin_builder.collection_select :floor, [*1..Location::FLOORS_LIVINGSTON["livingston apartments"]], :to_i, :to_i, selected: "1", id: "floor_select", hide_label: true    
+        =origin_builder.hidden_field :university_id, :value => current_user.university_id
   .panel
     %h3 Destinations
     %p Where would you like to live?

@@ -49,7 +49,7 @@ $(document).ready(function(){
 
   $('select#location_building').change(
 
-    function updateFloors(){
+    function(){
       var building = $('#location_building>option:selected').text();
       building = building.toLowerCase();
       var newOptions = "<option value = '0'>Anywhere</option>";
