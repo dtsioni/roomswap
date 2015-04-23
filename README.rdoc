@@ -1,28 +1,14 @@
-== README
+== roomswap
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The purpose of roomswap is to allow students within universities to swap rooms with one another. Initially being
+developed for Rutgers University, the program can be expanded to any university.
 
-Things you may want to cover:
+Students who wish to change rooms will create a swap ticket with their current location and desired destinations. When
+another student using the service creates a swap ticket that satisfies another, a match is made and both students are notified
+by email.
 
-* Ruby version
+A ticket is satisfied when its owner's current location matches the desired destination of another ticket, and if
+its desired destination matches the current location of that same ticket.
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Locations can be as precise as a specific floor in a building, or as vague as just a campus. Roomswap will intelligently
+pair up students to most effectively place them where they want to live.
